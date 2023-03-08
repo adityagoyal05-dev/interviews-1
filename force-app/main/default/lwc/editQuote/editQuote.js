@@ -22,8 +22,6 @@ export default class EditQuote extends LightningElement {
           this.errorMessage = JSON.stringify(error);
       } else if (result.data !== undefined) {
                this.quoteData = result.data;
-               const selectedEvent = new CustomEvent('updated', { detail: this.quoteData.totalQuotedAmount });
-               this.dispatchEvent(selectedEvent);
       }
   };  
 
@@ -38,7 +36,6 @@ export default class EditQuote extends LightningElement {
   }
 
   saveUpdatedQuote(){
-    debugger;
     let quote = {'sObject' : 'Quote__c'};
     quote.Id = this.quoteData.id;
     quote.Start_Date__c = this.startDate;
@@ -48,7 +45,6 @@ export default class EditQuote extends LightningElement {
         quoteObj : quote
     })
         .then(data=>{
-          debugger;
             if(data){
                 this.showMessage('Record is updated succesfully!', 'Success', 'success', 'dismissable');
             }else{

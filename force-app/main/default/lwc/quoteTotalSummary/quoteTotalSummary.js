@@ -4,19 +4,16 @@
  */
 
 import { LightningElement , api } from "lwc";
+import adjustQuotePrice from "c/adjustQuotePrice";
 
 export default class QuoteTotalSummary extends LightningElement {
     @api quoteAmount;
+    @api recordId;
 
-    connectedCallback()
+    async openModal()
     {
-        //console.log('quoteAmount : '+quoteAmount);
-    }
-
-
-    openModal()
-    {
-        const selectedEvent = new CustomEvent('openModal', { detail: this.quoteAmount });
-        this.dispatchEvent(selectedEvent);
+        const selectedEvent = await adjustQuotePrice.open({
+            recordId  : this.recordId
+        });
     }
 }
