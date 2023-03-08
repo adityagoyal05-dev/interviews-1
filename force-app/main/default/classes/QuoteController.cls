@@ -8,7 +8,6 @@ public with sharing class QuoteController {
         try {
             Quote__c  quote = [SELECT Id, Name, EndDate__c, Start_Date__c, TotalQuotedAmount__c FROM Quote__c Where Id =:quoteId];
             QuoteDto quoteDto = new QuoteDto(quote);
-            System.debug('quoteDto : '+quoteDto);
             return quoteDto;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());

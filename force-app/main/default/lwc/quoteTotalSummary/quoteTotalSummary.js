@@ -10,14 +10,12 @@ export default class QuoteTotalSummary extends LightningElement {
 
     connectedCallback()
     {
-        debugger;
         //console.log('quoteAmount : '+quoteAmount);
     }
 
 
     openModal()
     {
-        debugger;
         const selectedEvent = new CustomEvent('openModal', { detail: this.quoteAmount });
         this.dispatchEvent(selectedEvent);
     }
